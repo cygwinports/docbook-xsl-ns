@@ -1,0 +1,13 @@
+inherit docbook
+
+
+src_install() {
+	cd ${S}
+
+	insinto ${DOCBOOK_DIR}
+	doins VERSION*
+	cp -r {assembly,common,eclipse,epub*,fo,highlighting}/ ${D}${DOCBOOK_DIR}/
+	cp -r {html*,images,javahelp,lib,manpages,profiling}/ ${D}${DOCBOOK_DIR}/
+	cp -r {roundtrip,slides,template,website,xhtml*}/ ${D}${DOCBOOK_DIR}/
+	docbook_xml_postinst
+}
